@@ -17,18 +17,29 @@ function getMatches() {
   if (cleanName.length === 0) {
     alert('Missing movie to search')
     $Name.focus
+    return
   }
+
   var cleanYear = $Year.val().trim()
 
   var title = 'http://www.omdbapi.com/?s=' + cleanName + '&y=' + cleanYear + '&plot=short&r=json'
- console.log('title=' + title);
+  console.log('title=' + title);
   $.ajax({
     method: 'GET',
     url: title,
     success: function(data) {
-      debugger
-      if (data.length > 1) {
-        alert(data.length)
+
+      if (data.Response === 'False') {
+        alert('Unable to locate any movies with that name')
+        $Name.focus()
+        return
+      }
+debugger
+      if (data.Search.length > 1) {
+        debugger
+        //alert(data.length)
+      } else {
+        alert('No results')
       }
       insertData(data)
 
