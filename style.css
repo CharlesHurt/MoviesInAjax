@@ -28,3 +28,7 @@ img {
 .cInline {
   white-space:nowrap;
 }
+
+.cHidden {
+  display:none;
+}

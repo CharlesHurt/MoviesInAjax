@@ -12,7 +12,7 @@ var x = document.getElementById('IdPosterResult')
   $('#IdGetIt').click(getMatches)
 }
 
-function getMatches() {
+function getMatches() { // Needs better UX
   var cleanName = $Name.val().trim()
   if (cleanName.length === 0) {
     alert('Missing movie to search')
@@ -29,36 +29,47 @@ function getMatches() {
     url: title,
     success: function(data) {
 
-      if (data.Response === 'False') {
+      if (data.Response === 'False') { // Needs better UX
         alert('Unable to locate any movies with that name')
         $Name.focus()
         return
       }
-debugger
-      if (data.Search.length > 1) {
-        debugger
-        //alert(data.length)
-      } else {
-        alert('No results')
-      }
-      insertData(data)
 
+      if (data.Search.length > 1) {
+        insertData(data)
+      }
     },
     err: function(data) { console.log('Error:' + err) },
   })
 }
 
 function insertData(data) {
+  var movies = []
+  var $movie
+  var i = 0
+  while (i < data.Search.length) {
 
-  $('#IdActorResult').text(data.Actors)
-  $('#IdGenreResult').text(data.Genre)
-  $('#IdPlotResult').text(data.Plot)
-  $('#IdPosterResult').attr('src', data.Poster)
 
-  $('#IdYearResult').text(data.Year)
-  $('#IdImdbResult').text(data.Rating)
-  $('#IdAwardsResult').text(data.Awards)
-  console.log('Done!!');
+    $movie = $('#IdResults').clone()
+
+    // Need to finish removing old attributes and inserting new
+    $('#IdTitleResult').text(data.Search[i].Title)
+    $('#IdYearResult').text(data.Search[i].Year)
+    $('#IdPosterResult').attr('src', data.Search[i].Poster)
+
+    movies.push($movie)
+    //console.log('data.Search[i]:' + data.Search[i].Year);
+    /*$('#IdActorResult').text(data.Search.Actors)
+    $('#IdGenreResult').text(data.Genre)
+    $('#IdPlotResult').text(data.Plot)
+
+
+    $('#IdYearResult').text(data.Year)
+    $('#IdImdbResult').text(data.Rating)
+    $('#IdAwardsResult').text(data.Awards)*/
+    i++
+  }
+  $('#IdDest').append(movies)
 }
 
 
