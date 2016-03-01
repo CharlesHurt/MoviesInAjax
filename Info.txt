@@ -1,0 +1,18 @@
+Use the OMDb API (http://www.omdbapi.com/) to allow users to find information about movies.
+Use jQuery AJAX methods to make a page which is dynamic and informative.
+
+You may also use Bootstrap to make styling easier, if you'd like.
+
+MVP:
+Allow a user to find a movie by title.
+Have search inputs which will allow the user to specify at least title, year,
+and type.  The title should be required to make the request, but your app
+should work appropriately whether or not they enter the other information.
+These inputs should also be appropriate for the data (number input for the
+year, perhaps a dropdown for the type.)
+The found movie should be displayed nicely to the user, including the movie poster.
+Include a link to the movie's IMDb page.  (you can construct this link from
+the IMDb id which comes with the movie.)
+If the movie isn't found, inform the user in an unobtrusive way.  If you are
+using Bootstrap, you may like to check out an alert div as inspiration.  Hide
+this when they've made a better search.

@@ -1,0 +1,27 @@
+
+body, div, span, input, button, select {
+  font-size:1.1em;
+  padding:2px;
+  maring:2px;
+  font-family:fantasy;
+  text-align:center;
+}
+
+#IdTitle {
+  font-size:1.2em;
+  font-weight:bolder;
+}
+
+#IdGetIt {
+  border-radius: 3px;
+}
+
+img {
+  padding:0px;
+  margin:0px;
+  max-width:20%;
+}
+
+.cInline {
+  white-space:nowrap;
+}
